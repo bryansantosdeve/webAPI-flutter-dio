@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:studio_ghibli_studio/data/movie_model.dart';
 import 'package:studio_ghibli_studio/external/remote_datasource.dart';
+import 'package:studio_ghibli_studio/shared/custom_app_bar.dart';
 import 'package:studio_ghibli_studio/shared/movies_grid_view.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -24,10 +25,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title:
-            const Text.rich(TextSpan(text: 'STUDIO GHIBLI: API WEB USING DIO')),
-      ),
+      appBar: const CustomAppBar(title: 'STUDIO GHIBLI MOVIES'),
       body: FutureBuilder(
         future: futureMovies,
         builder: (context, snapshot) {
@@ -40,9 +38,10 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text('IMPOSSIVEL DE CONECTAR'),
             );
           }
-          return const CircularProgressIndicator();
+          return const Center(child: CircularProgressIndicator());
         },
       ),
+      backgroundColor: const Color.fromARGB(255, 190, 166, 166),
     );
   }
 }
